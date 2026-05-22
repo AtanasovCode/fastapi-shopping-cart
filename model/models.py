@@ -15,7 +15,7 @@ class Category(Base):
 
 
 class Manufacturer(Base):
-    __Tablename__ = "categories"
+    __Tablename__ = "manufacturers"
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
@@ -29,7 +29,7 @@ class Product(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    prince = Column(Float)
+    price = Column(Float)
     quantity = Column(Integer)
     category_id = Column(Integer, ForeignKey("categories.id"))
     manufacturer_id = Column(Integer, ForeignKey("manufacturers.id"))
@@ -63,7 +63,7 @@ class Cart(Base):
 class CartItems(Base):
     __tablename__ = "cart_items"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer primary_key=True)
     cart_id = Column(Integer, ForeignKey("carts.id"))
     product_id = Column(Integer, ForeignKey("products.id"))
     quantity = Column(Integer)

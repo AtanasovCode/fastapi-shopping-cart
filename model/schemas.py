@@ -37,3 +37,39 @@ class ProductCreate(BaseModel):
     quantity: int
     category_id: int
     manufacturer_id: int
+
+
+class UserSchema(BaseModel):
+    username: str
+    email: str
+
+    class Config:
+        from_attributes = True
+
+
+
+class CartItemSchema(BaseModel):
+    id: int,
+    product: ProductSchema
+    quantity: int
+
+    class Config:
+        from_attributes = True
+
+
+class CartItemCreate(BaseModel):
+    product_id: int
+    quantity: int
+
+
+class CartSchema(BaseModel):
+    id: int
+    user: UserSchema
+    items: list[CartItemSchema]= []
+
+    class Config:
+        from_attributes = True
+
+
+class CartCreate(BaseModel):
+    user_id: int
